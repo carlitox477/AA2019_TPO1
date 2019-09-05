@@ -77,7 +77,7 @@ public class SumaDigitos {
 		}
 	
 	public static int[] generarCasoEspecial(){
-		//la idea es generar números de hasta 4 cifras y luego
+		//la idea es generar numeros de hasta 4 cifras y luego
 		// agregarle un 0. Por ejemplo, si genramos 22, el
 		//mayor generado es 220
 		int[] mayor_menor=new int[2];
@@ -88,6 +88,5 @@ public class SumaDigitos {
 		mayor_menor[0]=mayor_menor[0]*10;
 		return mayor_menor;
 		}
-	
-//probando git
+
 }
