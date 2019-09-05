@@ -65,52 +65,74 @@ public class Ordenamiento {
 	 * @param a Pre: array de enteros desordenado. Post: array ordenado
 	 */
 
-	public static void quicksort(int[] a, int i, int j) {
-		int indice, k;
-		indice = particion(a, i, j);
-		if (indice >= 0) {
-			k = particion(a, i, a[indice]);
-			quicksort(a, i, k - 1);
-			quicksort(a, k, j);
+	public static void quicksort(int[] arreglo, int i, int j) {
+		int indiceP;
+		if (i < j) {
+			indiceP = particion(arreglo, i, j);
+			quicksort(arreglo, i, indiceP - 1);
+			quicksort(arreglo, indiceP + 1, j);
 		}
 	}
 
-	private static int particion(int[] a, int iz, int de) {
+	/**
+	 * Esta funcion toma el ultimo elemento como pivote, coloca al pivote en su
+	 * posicion correcta en un arreglo ordenado, y coloca todos los menores (menores
+	 * que el pivote) a la izquierda del pivote y a la derecha los mayores que el
+	 * pivote
+	 * 
+	 * @param arreglo
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	private static int particion(int[] arreglo, int min, int max) {
 		int i, pivote;
-		permuta(a, (iz + de) / 2, iz);
-		// el pivote es el de centro y se cambia con el primero
-		pivote = a[iz];
-		i = iz;
-		for (int s = iz + 1; s <= de; s++)
-			if (a[s] <= pivote) {
+		pivote = arreglo[max];
+		i = (min - 1); // indice del elemento mas chico
+
+		for (int j = min; j < max; j++) {
+
+			// Si el elemento actual es menor que el pivote
+			if (arreglo[j] < pivote) {
 				i++;
-				permuta(a, i, s);
+
+				// intercambia arreglo[i] y arreglo [j]
+				permuta(arreglo, i, j);
 			}
-		permuta(a, iz, i);// se restituye el pivote donde debe estar
-		return i; // retorna la posicion en que queda el pivote
+		}
+		permuta(arreglo, i + 1, max);
+		return i + 1;
 	}
 
+	/**
+	 * Algoritmo de intercambio de elementos en un arreglo (de enteros)
+	 * 
+	 * @param a --> arreglo
+	 * @param i --> elemento 1
+	 * @param j --> elemento 2
+	 */
 	private static void permuta(int[] a, int i, int j) {
-		int t;
-		t = a[i];
+		int temp;
+		temp = a[i];
 		a[i] = a[j];
-		a[j] = t;
+		a[j] = temp;
 	}
-	
-	
-	
+
 	/**
 	 * Metodo de Ordenamiento Bucket Sort
 	 * 
 	 * El algoritmo trabaja de la siguiente forma:
-	 *  
-	 * Es un algoritmo de ordenamiento que distribuye todos los elementos a ordenar entre un número finito de casilleros.
-	 * Cada casillero sólo puede contener los elementos que cumplan unas determinadas condiciones. 
-	 * Las condiciones deben ser excluyentes entre sí, para evitar que un elemento pueda ser clasificado en dos casilleros distintos. 
-	 * Después cada uno de esos casilleros se ordena individualmente con otro algoritmo de ordenación (que podría ser distinto según el casillero),
-	 * o se aplica recursivamente este algoritmo para obtener casilleros con menos elementos. 
-	 * Se trata de una generalización del algoritmo Pigeonhole sort. 
-	 * Cuando los elementos a ordenar están uniformemente distribuidos la complejidad computacional de este algoritmo es de O(n).
+	 * 
+	 * Es un algoritmo de ordenamiento que distribuye todos los elementos a ordenar
+	 * entre un número finito de casilleros. Cada casillero sólo puede contener los
+	 * elementos que cumplan unas determinadas condiciones. Las condiciones deben
+	 * ser excluyentes entre sí, para evitar que un elemento pueda ser clasificado
+	 * en dos casilleros distintos. Después cada uno de esos casilleros se ordena
+	 * individualmente con otro algoritmo de ordenación (que podría ser distinto
+	 * según el casillero), o se aplica recursivamente este algoritmo para obtener
+	 * casilleros con menos elementos. Se trata de una generalización del algoritmo
+	 * Pigeonhole sort. Cuando los elementos a ordenar están uniformemente
+	 * distribuidos la complejidad computacional de este algoritmo es de O(n).
 	 * 
 	 * 
 	 * @param elementos
@@ -127,7 +149,5 @@ public class Ordenamiento {
 		}
 
 	}
-	
-	
 
 }
