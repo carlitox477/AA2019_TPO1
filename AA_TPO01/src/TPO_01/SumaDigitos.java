@@ -89,5 +89,5 @@ public class SumaDigitos {
 		return mayor_menor;
 		}
 	
-
+//probando git
 }
