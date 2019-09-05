@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import inout.RandomInts;
+import ordenamiento.Ordenamiento;
+
 class OrdenamientoTest {
 
 	@Test
@@ -32,5 +35,16 @@ class OrdenamientoTest {
 		Ordenamiento.bucketsort(desorden, 21, 3);
 		assertArrayEquals(creciente, desorden);
 	}
+	
+	@Test
+	public void testTiempos() {
+		int[] a = RandomInts.leerArchivo();
+		double t1 = System.currentTimeMillis();
+		Ordenamiento.seleccion(a);
+		double t2 = System.currentTimeMillis();
+		System.out.println("**TIEMPO seleccion=" + (t2 - t1));
+	}
+	
+	
 
 }

@@ -10,9 +10,8 @@ public class Ordenamiento {
 		int[] creciente = { 1000, 101, 4000, 33, 9, 93, 49, 1099, 399 };
 		// sumas por elemento 1, 2, 4,6, 9, 12, 13, 19, 21
 		Ordenamiento.bucketsort(desorden, 21, 3);
-		
-		
-		//for (int k = 0; k < arreglo.length; k++) {
+
+		// for (int k = 0; k < arreglo.length; k++) {
 		System.out.println("ARREGLO DESORDENADO: ");
 
 		System.out.println("ARREGLO ORDENADO");
@@ -165,16 +164,16 @@ public class Ordenamiento {
 		// Crea el bucket vacio
 		int longitudRango = valorMax / cantParticiones;
 		int[][] bucket = new int[cantParticiones][arreglo.length];
-		int[] limitesBuckets=new int[cantParticiones];
+		int[] limitesBuckets = new int[cantParticiones];
 		// Pone los elementos del arreglo en diferentes buckets
 		for (int i = 0; i < arreglo.length; i++) {
 
-			clasificarNumeros(arreglo[i], bucket, longitudRango,limitesBuckets);
+			clasificarNumeros(arreglo[i], bucket, longitudRango, limitesBuckets);
 		}
 
 		// ordena los buckets de forma individual
 		for (int i = 0; i < bucket.length; i++) {
-			quicksort(bucket[i], 0, limitesBuckets[i]-1);
+			quicksort(bucket[i], 0, limitesBuckets[i] - 1);
 		}
 
 		// Concatena los buckets en el arreglo inicial
@@ -199,15 +198,15 @@ public class Ordenamiento {
 		bucket[i] = elemento;
 	}
 
-	private static void clasificarNumeros(int numero, int[][] bucket, int longRango, int[]limitesBuckets) {
+	private static void clasificarNumeros(int numero, int[][] bucket, int longRango, int[] limitesBuckets) {
 
 		int sumaCifras, posBucket;
-		sumaCifras= SumaDigitos.sumaCifras(numero);
+		sumaCifras = SumaDigitos.sumaCifras(numero);
 		if (sumaCifras % longRango != 0 || sumaCifras == 0) {
-			posBucket=sumaCifras / longRango;
+			posBucket = sumaCifras / longRango;
 		} else {
 			// si no puede caer fuera del arreglo
-			posBucket=sumaCifras / longRango - 1;
+			posBucket = sumaCifras / longRango - 1;
 		}
 		limitesBuckets[posBucket]++;
 		addToBucket(bucket[posBucket], numero);
