@@ -1,6 +1,23 @@
 package TPO_01;
 
+import java.util.Random;
+
 public class Ordenamiento {
+
+	public static void main(String[] args) {
+
+		int[] desorden = { 399, 4000, 1000, 49, 93, 1099, 101, 33, 9 };
+		int[] creciente = { 1000, 101, 4000, 33, 9, 93, 49, 1099, 399 };
+		// sumas por elemento 1, 2, 4,6, 9, 12, 13, 19, 21
+		Ordenamiento.bucketsort(desorden, 21, 3);
+		
+		
+		//for (int k = 0; k < arreglo.length; k++) {
+		System.out.println("ARREGLO DESORDENADO: ");
+
+		System.out.println("ARREGLO ORDENADO");
+
+	}
 
 	/**
 	 * Metodo de ordenamiento Burbuja.
@@ -19,11 +36,11 @@ public class Ordenamiento {
 	public static void burbuja(int[] a) {
 		int n = a.length - 1;
 		for (int i = 0; i <= n; i++) {
-			
+
 			for (int j = 0; j < n - i; j++) {
-				if(SumaDigitos.mayorQue(a[j], a[j+1])) {
-				//if (a[j] > a[j + 1]) {
-					permuta(a,j,j+1);
+				if (SumaDigitos.mayorQue(a[j], a[j + 1])) {
+					// if (a[j] > a[j + 1]) {
+					permuta(a, j, j + 1);
 				}
 			}
 		}
@@ -49,9 +66,9 @@ public class Ordenamiento {
 	 *
 	 * En el mejor caso, el pivote termina en el centro de la lista, dividiendola en
 	 * dos sublistas de igual tamaño. En este caso, el orden de complejidad del
-	 * algoritmo es O(n * log n). En el peor caso, el pivote termina en un extremo de
-	 * la lista. El orden de complejidad del algoritmo es entonces de O(n�). El peor
-	 * caso dependerá de la implementacion del algoritmo, aunque habitualmente
+	 * algoritmo es O(n * log n). En el peor caso, el pivote termina en un extremo
+	 * de la lista. El orden de complejidad del algoritmo es entonces de O(n�). El
+	 * peor caso dependerá de la implementacion del algoritmo, aunque habitualmente
 	 * ocurre en listas que se encuentran ordenadas, o casi ordenadas. Pero
 	 * principalmente depende del pivote, si por ejemplo el algoritmo implementado
 	 * toma como pivote siempre el primer elemento del array, y el array que le
@@ -61,16 +78,16 @@ public class Ordenamiento {
 	 *
 	 * @param a Pre: array de enteros desordenado. Post: array ordenado
 	 */
-	
+
 	public static void quicksort(int[] arreglo) {
-		if (arreglo!=null) {
-			quicksort(arreglo, 0, arreglo.length-1);
-			}
+		if (arreglo != null) {
+			quicksort(arreglo, 0, arreglo.length - 1);
+		}
 	}
-	
+
 	private static void quicksort(int[] arreglo, int i, int j) {
-		//i posición inicial
-		//j posicion final
+		// i posición inicial
+		// j posicion final
 		int indiceP;
 		if (i < j) {
 			indiceP = particion(arreglo, i, j);
@@ -97,10 +114,10 @@ public class Ordenamiento {
 
 		for (int j = min; j < max; j++) {
 			// Si el elemento actual es menor que el pivote
-			if(SumaDigitos.mayorQue(pivote, arreglo[j])){
-			//if (arreglo[j] < pivote) {
+			if (SumaDigitos.mayorQue(pivote, arreglo[j])) {
+				// if (arreglo[j] < pivote) {
 				i++;
-				
+
 				// intercambia arreglo[i] y arreglo [j]
 				permuta(arreglo, i, j);
 			}
@@ -129,45 +146,71 @@ public class Ordenamiento {
 	 * El algoritmo trabaja de la siguiente forma:
 	 * 
 	 * Es un algoritmo de ordenamiento que distribuye todos los elementos a ordenar
-	 * entre un n�mero finito de casilleros. Cada casillero s�lo puede contener los
-	 * elementos que cumplan unas determinadas condiciones. Las condiciones deben
-	 * ser excluyentes entre s�, para evitar que un elemento pueda ser clasificado
-	 * en dos casilleros distintos. Despu�s cada uno de esos casilleros se ordena
-	 * individualmente con otro algoritmo de ordenaci�n (que podr�a ser distinto
-	 * seg�n el casillero), o se aplica recursivamente este algoritmo para obtener
-	 * casilleros con menos elementos. Se trata de una generalizaci�n del algoritmo
-	 * Pigeonhole sort. Cuando los elementos a ordenar est�n uniformemente
-	 * distribuidos la complejidad computacional de este algoritmo es de O(n).
+	 * entre un n�mero finito de casilleros. Cada casillero s�lo puede contener
+	 * los elementos que cumplan unas determinadas condiciones. Las condiciones
+	 * deben ser excluyentes entre s�, para evitar que un elemento pueda ser
+	 * clasificado en dos casilleros distintos. Despu�s cada uno de esos
+	 * casilleros se ordena individualmente con otro algoritmo de ordenaci�n (que
+	 * podr�a ser distinto seg�n el casillero), o se aplica recursivamente este
+	 * algoritmo para obtener casilleros con menos elementos. Se trata de una
+	 * generalizaci�n del algoritmo Pigeonhole sort. Cuando los elementos a
+	 * ordenar est�n uniformemente distribuidos la complejidad computacional de
+	 * este algoritmo es de O(n).
 	 * 
 	 * 
 	 * @param arreglo
-	 * @param n (colocar la longitud del arreglo)
+	 * @param n       (colocar la longitud del arreglo)
 	 */
-	public void bucketsort(int arreglo[], int n) {
-
+	public static void bucketsort(int arreglo[], int valorMax, int cantParticiones) {
 		// Crea el bucket vacio
-		int[] bucket = new int[n];
-
+		int longitudRango = valorMax / cantParticiones;
+		int[][] bucket = new int[cantParticiones][arreglo.length];
+		int[] limitesBuckets=new int[cantParticiones];
 		// Pone los elementos del arreglo en diferentes buckets
-		for (int i = 0; i < bucket.length; i++) {
-			int bi = n*arreglo[i];
-			
+		for (int i = 0; i < arreglo.length; i++) {
+
+			clasificarNumeros(arreglo[i], bucket, longitudRango,limitesBuckets);
 		}
-		
-		
-		//ordena los buckets de forma individual
-		
-		for (int j = 0; j < bucket.length; j++) {
+
+		// ordena los buckets de forma individual
+		for (int i = 0; i < bucket.length; i++) {
+			quicksort(bucket[i], 0, limitesBuckets[i]-1);
+		}
+
+		// Concatena los buckets en el arreglo inicial
+		int pos = 0;
+		for (int i = 0; i < bucket.length; i++) {
+			int j = 0;
+			while (j < limitesBuckets[i]) {
+				arreglo[pos] = bucket[i][j];
+				pos++;
+				j++;
+			}
 
 		}
-		
-		//Concatena los buckets en el arreglo inicial
-		
-		int indice= 0;
-		for (int k = 0; k < bucket.length; k++) {
-			
+
+	}
+
+	private static void addToBucket(int[] bucket, int elemento) {
+		int i = 0;
+		while (i < bucket.length && bucket[i] != 0) {
+			i++;
 		}
-		
+		bucket[i] = elemento;
+	}
+
+	private static void clasificarNumeros(int numero, int[][] bucket, int longRango, int[]limitesBuckets) {
+
+		int sumaCifras, posBucket;
+		sumaCifras= SumaDigitos.sumaCifras(numero);
+		if (sumaCifras % longRango != 0 || sumaCifras == 0) {
+			posBucket=sumaCifras / longRango;
+		} else {
+			// si no puede caer fuera del arreglo
+			posBucket=sumaCifras / longRango - 1;
+		}
+		limitesBuckets[posBucket]++;
+		addToBucket(bucket[posBucket], numero);
 
 	}
 
