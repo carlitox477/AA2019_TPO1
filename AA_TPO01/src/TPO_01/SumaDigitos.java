@@ -88,5 +88,6 @@ public class SumaDigitos {
 		mayor_menor[0]=mayor_menor[0]*10;
 		return mayor_menor;
 		}
+	
 
 }

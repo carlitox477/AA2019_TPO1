@@ -5,15 +5,24 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class OrdenamientoTest {
-
+	
+	@Test
+	public void testBurbuja() {
+		int[] desorden = {399,4000,1000,49,93,1099,101,33,9};
+		int[] creciente = {1000,101,4000, 33,9,93,49,1099,399};
+		//sumas por elemento 1, 2, 4,6, 9, 12, 13, 19, 21
+		Ordenamiento.burbuja(desorden);
+		assertArrayEquals(creciente, desorden);
+	}
 
 	@Test
 	public void testQuicksort() {
-		int[] desorden = {9,6,4,7,3,5,1,8,2};
-		int[] creciente = {1,2,3,4,5,6,7,8,9};
-		Ordenamiento.quicksort(desorden, 0,8);
+		int[] desorden = {399,4000,1000,49,93,1099,101,33,9};
+		int[] creciente = {1000,101,4000, 33,9,93,49,1099,399};
+		//sumas por elemento 1, 2, 4,6, 9, 12, 13, 19, 21
+		Ordenamiento.quicksort(desorden);
 		assertArrayEquals(creciente, desorden);
-
 	}
+	
 	
 }

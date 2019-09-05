@@ -12,21 +12,18 @@ public class Ordenamiento {
 	 *
 	 * Tiempo de ejecucion del algoritmo burbuja:
 	 *
-	 * Para el mejor caso (un paso) O(n) | Peor caso n(n-1)/2 | Promedio O(n²)
+	 * Para el mejor caso (un paso) O(n) | Peor caso n(n-1)/2 | Promedio O(nï¿½)
 	 *
 	 * @param a Pre: array de enteros desordenado. Post: array ordenado
 	 */
 	public static void burbuja(int[] a) {
-		int aux;
 		int n = a.length - 1;
 		for (int i = 0; i <= n; i++) {
-
+			
 			for (int j = 0; j < n - i; j++) {
-
-				if (a[j] > a[j + 1]) {
-					aux = a[j];
-					a[j] = a[j + 1];
-					a[j + 1] = aux;
+				if(SumaDigitos.mayorQue(a[j], a[j+1])) {
+				//if (a[j] > a[j + 1]) {
+					permuta(a,j,j+1);
 				}
 			}
 		}
@@ -52,20 +49,28 @@ public class Ordenamiento {
 	 *
 	 * En el mejor caso, el pivote termina en el centro de la lista, dividiendola en
 	 * dos sublistas de igual tamaÃ±o. En este caso, el orden de complejidad del
-	 * algoritmo es O(n·log n). En el peor caso, el pivote termina en un extremo de
-	 * la lista. El orden de complejidad del algoritmo es entonces de O(n²). El peor
+	 * algoritmo es O(n * log n). En el peor caso, el pivote termina en un extremo de
+	 * la lista. El orden de complejidad del algoritmo es entonces de O(nï¿½). El peor
 	 * caso dependerÃ¡ de la implementacion del algoritmo, aunque habitualmente
 	 * ocurre en listas que se encuentran ordenadas, o casi ordenadas. Pero
 	 * principalmente depende del pivote, si por ejemplo el algoritmo implementado
 	 * toma como pivote siempre el primer elemento del array, y el array que le
 	 * pasamos esta ordenado, siempre va a generar a su izquierda un array vacÃ­o,
-	 * lo que es ineficiente. En el caso promedio, el orden es O(n·log n).
+	 * lo que es ineficiente. En el caso promedio, el orden es O(nï¿½log n).
 	 *
 	 *
 	 * @param a Pre: array de enteros desordenado. Post: array ordenado
 	 */
-
-	public static void quicksort(int[] arreglo, int i, int j) {
+	
+	public static void quicksort(int[] arreglo) {
+		if (arreglo!=null) {
+			quicksort(arreglo, 0, arreglo.length-1);
+			}
+	}
+	
+	private static void quicksort(int[] arreglo, int i, int j) {
+		//i posiciÃ³n inicial
+		//j posicion final
 		int indiceP;
 		if (i < j) {
 			indiceP = particion(arreglo, i, j);
@@ -91,11 +96,11 @@ public class Ordenamiento {
 		i = (min - 1); // indice del elemento mas chico
 
 		for (int j = min; j < max; j++) {
-
 			// Si el elemento actual es menor que el pivote
-			if (arreglo[j] < pivote) {
+			if(SumaDigitos.mayorQue(pivote, arreglo[j])){
+			//if (arreglo[j] < pivote) {
 				i++;
-
+				
 				// intercambia arreglo[i] y arreglo [j]
 				permuta(arreglo, i, j);
 			}
@@ -124,14 +129,14 @@ public class Ordenamiento {
 	 * El algoritmo trabaja de la siguiente forma:
 	 * 
 	 * Es un algoritmo de ordenamiento que distribuye todos los elementos a ordenar
-	 * entre un número finito de casilleros. Cada casillero sólo puede contener los
+	 * entre un nï¿½mero finito de casilleros. Cada casillero sï¿½lo puede contener los
 	 * elementos que cumplan unas determinadas condiciones. Las condiciones deben
-	 * ser excluyentes entre sí, para evitar que un elemento pueda ser clasificado
-	 * en dos casilleros distintos. Después cada uno de esos casilleros se ordena
-	 * individualmente con otro algoritmo de ordenación (que podría ser distinto
-	 * según el casillero), o se aplica recursivamente este algoritmo para obtener
-	 * casilleros con menos elementos. Se trata de una generalización del algoritmo
-	 * Pigeonhole sort. Cuando los elementos a ordenar están uniformemente
+	 * ser excluyentes entre sï¿½, para evitar que un elemento pueda ser clasificado
+	 * en dos casilleros distintos. Despuï¿½s cada uno de esos casilleros se ordena
+	 * individualmente con otro algoritmo de ordenaciï¿½n (que podrï¿½a ser distinto
+	 * segï¿½n el casillero), o se aplica recursivamente este algoritmo para obtener
+	 * casilleros con menos elementos. Se trata de una generalizaciï¿½n del algoritmo
+	 * Pigeonhole sort. Cuando los elementos a ordenar estï¿½n uniformemente
 	 * distribuidos la complejidad computacional de este algoritmo es de O(n).
 	 * 
 	 * 
