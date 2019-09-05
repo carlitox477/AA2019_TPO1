@@ -138,5 +138,16 @@ class SumaDigitosTest {
 			}
 		return correcto;
 		}
+	
+	private int[] generearMCBucketSort(int cantBuckets, int cantElePorPart, int sumaLimite) {
+		//cantBuckets sera la cantidad de particiones
+		//cantElem sera la cantidad de elementos a generar
+		//por particion
+		//sumaLimite sera el valor máximo que podra
+		//tener la suma de las cifras de un elemento
+		
+		
+		return null;
+		}
 
 }
