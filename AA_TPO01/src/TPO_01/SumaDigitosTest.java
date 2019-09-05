@@ -10,7 +10,7 @@ class SumaDigitosTest {
 	
 	@Test
 	public void testMCBucketSort() {
-		mostrarArreglo(generearMCBucketSort(3,3,15));
+		//ha realizar
 		}
 	
 	@Test
@@ -162,14 +162,6 @@ class SumaDigitosTest {
 				}
 			}
 		return sal;
-		}
-	
-	private void mostrarArreglo(int[] arr) {
-		int auxI;
-		for (int i=0; i<arr.length;i++) {
-			auxI=1+i;
-			System.out.println(auxI+"º: "+arr[i]);
-			}
 		}
 
 }
