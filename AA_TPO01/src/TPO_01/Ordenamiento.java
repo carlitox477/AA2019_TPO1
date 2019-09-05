@@ -135,18 +135,34 @@ public class Ordenamiento {
 	 * distribuidos la complejidad computacional de este algoritmo es de O(n).
 	 * 
 	 * 
-	 * @param elementos
-	 * @param n
+	 * @param arreglo
+	 * @param n (colocar la longitud del arreglo)
 	 */
-	public void bucketsort(int elementos, int n) {
-		int[] casilleros = new int[n];
+	public void bucketsort(int arreglo[], int n) {
 
-		for (int i = 0; i < casilleros.length; i++) {
+		// Crea el bucket vacio
+		int[] bucket = new int[n];
+
+		// Pone los elementos del arreglo en diferentes buckets
+		for (int i = 0; i < bucket.length; i++) {
+			int bi = n*arreglo[i];
+			
+		}
+		
+		
+		//ordena los buckets de forma individual
+		
+		for (int j = 0; j < bucket.length; j++) {
 
 		}
-		for (int j = 0; j < casilleros.length; j++) {
-
+		
+		//Concatena los buckets en el arreglo inicial
+		
+		int indice= 0;
+		for (int k = 0; k < bucket.length; k++) {
+			
 		}
+		
 
 	}
 
