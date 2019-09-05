@@ -6,12 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class OrdenamientoTest {
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
 
-	
 	@Test
 	public void testQuicksort() {
 		int[] desorden = {9,6,4,7,3,5,1,8,2};
