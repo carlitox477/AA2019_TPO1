@@ -9,6 +9,11 @@ import org.junit.jupiter.api.Test;
 class SumaDigitosTest {
 	
 	@Test
+	public void testMCBucketSort() {
+		mostrarArreglo(generearMCBucketSort(3,3,15));
+		}
+	
+	@Test
 	public void testGeneradorSuma() {
 		int [][]correcto, prueba;
 		prueba=generarArregloTestGenerador();
@@ -145,9 +150,26 @@ class SumaDigitosTest {
 		//por particion
 		//sumaLimite sera el valor máximo que podra
 		//tener la suma de las cifras de un elemento
+		int auxI;
+		int[]sal;
 		
+		auxI=sumaLimite/cantBuckets;
+		sal=new int [cantBuckets*cantElePorPart];
 		
-		return null;
+		for (int i=0;i<cantBuckets;i++) {
+			for(int j=(i*cantElePorPart);j<((i+1)*cantElePorPart);j++) {
+				sal[j]=SumaDigitos.generarNumeroEntreSuma(auxI*i+1, auxI*(i+1));
+				}
+			}
+		return sal;
+		}
+	
+	private void mostrarArreglo(int[] arr) {
+		int auxI;
+		for (int i=0; i<arr.length;i++) {
+			auxI=1+i;
+			System.out.println(auxI+"º: "+arr[i]);
+			}
 		}
 
 }

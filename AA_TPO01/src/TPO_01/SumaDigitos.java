@@ -118,5 +118,17 @@ public class SumaDigitos {
 				}
 		return num;
 		}
+	
+	public static int generarNumeroEntreSuma(int suma1, int suma2) {
+		//este método genera un número tal que la suma
+		//de sus cifras se encuentra en el rango especificado;
+		int auxI, gen;
+		gen=-1;
+		if (suma1>=0 && suma1<=suma2) {
+			auxI=suma1+(int)(Math.random()*(suma2-suma1+1));
+			gen=generarNumeroDeSuma(auxI);
+			}
+		return gen;
+		}
 
 }
