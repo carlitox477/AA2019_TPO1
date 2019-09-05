@@ -89,5 +89,34 @@ public class SumaDigitos {
 		return mayor_menor;
 		}
 	
+	public static int generarNumeroDeSuma(int suma) {
+		//este método genera un número tal que la suma
+		//de sus cifras sea el especificado;
+		int gen=-1;
+		if(suma>=0) {
+			gen=generarNumeroDeSuma(suma, 0);
+			}else if (suma==0) {
+				gen=0;
+				}
+		return gen;
+		}
+	
+	private static int generarNumeroDeSuma(int suma, int num) {
+		//este método genera un número tal que la suma
+		//de sus cifras sea el especificado;
+		int aux;
+		
+		num*=10;
+		if(suma>9) {
+			//genero número de 0 a 9
+			aux=((int) (Math.random()*10));
+			suma-=aux;
+			num+=aux;
+			num=generarNumeroDeSuma(suma,num);
+			}else {
+				num+=suma;
+				}
+		return num;
+		}
 
 }

@@ -9,6 +9,14 @@ import org.junit.jupiter.api.Test;
 class SumaDigitosTest {
 	
 	@Test
+	public void testGeneradorSuma() {
+		int [][]correcto, prueba;
+		prueba=generarArregloTestGenerador();
+		correcto=generarArregloTestGeneradorCorrecto(prueba);
+		assertArrayEquals(correcto,prueba);
+		}
+	
+	@Test
 	public void testSumaCifras() {
 		
 		int suma,esperado;
@@ -103,6 +111,32 @@ class SumaDigitosTest {
 			arreglo[i]=generador.nextInt(100000);
 			}
 		return arreglo;
+		}
+	
+	private int[][] generarArregloTestGenerador() {
+		int cantidadNumeros, sumaAleatoria, num;
+		int[][] numeros_sumas;
+		
+		cantidadNumeros=100;
+		
+		numeros_sumas=new int[cantidadNumeros][2];
+		for (int i=0;i<cantidadNumeros;i++) {
+			sumaAleatoria=(int) (Math.random()*(9*3));
+			num=SumaDigitos.generarNumeroDeSuma(sumaAleatoria);
+			numeros_sumas[i][0]=num;
+			numeros_sumas[i][1]=sumaAleatoria;
+			}
+		return numeros_sumas;
+		}
+	
+	private int[][] generarArregloTestGeneradorCorrecto(int[][]arreglo) {
+		int[][] correcto;
+		correcto=new int[arreglo.length][2];
+		for (int i=0;i<correcto.length;i++) {
+			correcto[i][0]=arreglo[i][0];
+			correcto[i][1]=SumaDigitos.sumaCifras(arreglo[i][0]);
+			}
+		return correcto;
 		}
 
 }
