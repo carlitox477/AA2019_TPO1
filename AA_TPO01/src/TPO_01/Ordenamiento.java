@@ -1,7 +1,5 @@
 package TPO_01;
 
-import java.util.Random;
-
 public class Ordenamiento {
 
 	/**
@@ -126,12 +124,6 @@ public class Ordenamiento {
 	}
 
 	/**
-	 * Quiksort buscando el valor medio
-	 * 
-	 * @param arreglo
-	 */
-
-	/**
 	 * Metodo de Ordenamiento Bucket Sort
 	 * 
 	 * El algoritmo trabaja de la siguiente forma:
@@ -156,9 +148,9 @@ public class Ordenamiento {
 		int longitudRango = valorMax / cantParticiones;
 		int[][] bucket = new int[cantParticiones][arreglo.length];
 		int[] limitesBuckets = new int[cantParticiones];
+
 		// Pone los elementos del arreglo en diferentes buckets
 		for (int i = 0; i < arreglo.length; i++) {
-
 			clasificarNumeros(arreglo[i], bucket, longitudRango, limitesBuckets);
 		}
 
@@ -176,11 +168,15 @@ public class Ordenamiento {
 				pos++;
 				j++;
 			}
-
 		}
-
 	}
 
+	/**
+	 * Añade un elemento en la primer posicion libre del arreglo
+	 * 
+	 * @param bucket:   bucket donde se va a agregar el elemento
+	 * @param elemento: elemento que se va a agregar
+	 */
 	private static void addToBucket(int[] bucket, int elemento) {
 		int i = 0;
 		while (i < bucket.length && bucket[i] != 0) {
@@ -189,8 +185,15 @@ public class Ordenamiento {
 		bucket[i] = elemento;
 	}
 
+	/**
+	 * Clasifica en que Bucket va a entrar el arreglo
+	 * 
+	 * @param numero:         elemento a agregar
+	 * @param bucket:         arreglo de buckets
+	 * @param longRango:      rango de los buckets
+	 * @param limitesBuckets: los limites del bucket
+	 */
 	private static void clasificarNumeros(int numero, int[][] bucket, int longRango, int[] limitesBuckets) {
-
 		int sumaCifras, posBucket;
 		sumaCifras = SumaDigitos.sumaCifras(numero);
 		if (sumaCifras % longRango != 0 || sumaCifras == 0) {
@@ -201,7 +204,5 @@ public class Ordenamiento {
 		}
 		limitesBuckets[posBucket]++;
 		addToBucket(bucket[posBucket], numero);
-
 	}
-
 }

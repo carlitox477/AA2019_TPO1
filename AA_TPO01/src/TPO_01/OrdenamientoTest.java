@@ -24,9 +24,10 @@ class OrdenamientoTest {
 	public void testQuicksort() {
 		int[] desorden = { 399, 4000, 1000, 49, 93, 1099, 101, 33, 9 };
 		int[] creciente = { 1000, 101, 4000, 33, 9, 93, 49, 1099, 399 };
+		int[] compare = creciente.clone();
 		// sumas por elemento 1, 2, 4,6, 9, 12, 13, 19, 21
-		Ordenamiento.quicksort(desorden);
-		assertArrayEquals(creciente, desorden);
+		Ordenamiento.quicksort(compare);
+		assertArrayEquals(creciente, compare);
 	}
 
 	@Test
@@ -61,12 +62,5 @@ class OrdenamientoTest {
 		assertArrayEquals(clon, arreglo);
 		// assertArrayEquals(arreglo, clon);
 	}
-	/*
-	 * @Test public void testTiempos() { int[] a = RandomInts.leerArchivo(); double
-	 * t1 = System.currentTimeMillis(); Ordenamiento.seleccion(a); double t2 =
-	 * System.currentTimeMillis(); System.out.println("**TIEMPO seleccion=" + (t2 -
-	 * t1)); }
-	 * 
-	 */
 
 }
