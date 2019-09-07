@@ -4,20 +4,6 @@ import java.util.Random;
 
 public class Ordenamiento {
 
-	public static void main(String[] args) {
-
-		int[] desorden = { 399, 4000, 1000, 49, 93, 1099, 101, 33, 9 };
-		int[] creciente = { 1000, 101, 4000, 33, 9, 93, 49, 1099, 399 };
-		// sumas por elemento 1, 2, 4,6, 9, 12, 13, 19, 21
-		Ordenamiento.bucketsort(desorden, 21, 3);
-
-		// for (int k = 0; k < arreglo.length; k++) {
-		System.out.println("ARREGLO DESORDENADO: ");
-
-		System.out.println("ARREGLO ORDENADO");
-
-	}
-
 	/**
 	 * Metodo de ordenamiento Burbuja.
 	 *
@@ -140,40 +126,10 @@ public class Ordenamiento {
 	}
 
 	/**
+	 * Quiksort buscando el valor medio
 	 * 
-	 * QUICKSORT MEJOR CASO
-	 * 
-	 * 
+	 * @param arreglo
 	 */
-	public static void quicksortMejor(int[] arreglo) {
-		if (arreglo != null) {
-			quicksortMejor(arreglo, 0, arreglo.length - 1);
-		}
-	}
-
-	private static void quicksortMejor(int[] arreglo, int i, int j) {
-		int indiceP;
-		if (i < j) {
-			indiceP = particionMejor(arreglo, i, j);
-			quicksortMejor(arreglo, i, indiceP - 1);
-			quicksortMejor(arreglo, indiceP + 1, j);
-		}
-	}
-
-	private static int particionMejor(int[] arreglo, int min, int max) {
-		int i, pivote, mitad;
-		mitad = (min + max) / 2;
-		pivote = arreglo[mitad];
-		i = (min - 1);
-		for (int j = min; j < max; j++) {
-			if (SumaDigitos.mayorQue(pivote, arreglo[j])) {
-				i++;
-				permuta(arreglo, i, j);
-			}
-		}
-		permuta(arreglo, i + 1, mitad);
-		return i + 1;
-	}
 
 	/**
 	 * Metodo de Ordenamiento Bucket Sort
