@@ -38,14 +38,14 @@ public class Ordenamiento {
 	 * pivote. Resituar los demas elementos de la lista a cada lado del pivote, de
 	 * manera que a un lado queden todos los menores que el, y al otro los mayores.
 	 * Los elementos iguales al pivote pueden ser colocados tanto a su derecha como
-	 * a su izquierda, dependiendo de la implementación deseada. En este momento, el
-	 * pivote ocupa exactamente el lugar que le corresponderá en la lista ordenada.
-	 * La lista queda separada en dos sublistas, una formada por los elementos a la
-	 * izquierda del pivote, y otra por los elementos a su derecha. Repetir este
-	 * proceso de forma recursiva para cada sublista mientras éstas contengan mas de
-	 * un elemento. Una vez terminado este proceso todos los elementos estarán
-	 * ordenados. Como se puede suponer, la eficiencia del algoritmo depende de la
-	 * posicion en la que termine el pivote elegido.
+	 * a su izquierda, dependiendo de la implementación deseada. En este momento,
+	 * el pivote ocupa exactamente el lugar que le corresponderá en la lista
+	 * ordenada. La lista queda separada en dos sublistas, una formada por los
+	 * elementos a la izquierda del pivote, y otra por los elementos a su derecha.
+	 * Repetir este proceso de forma recursiva para cada sublista mientras éstas
+	 * contengan mas de un elemento. Una vez terminado este proceso todos los
+	 * elementos estarán ordenados. Como se puede suponer, la eficiencia del
+	 * algoritmo depende de la posicion en la que termine el pivote elegido.
 	 *
 	 * En el mejor caso, el pivote termina en el centro de la lista, dividiendola en
 	 * dos sublistas de igual tamaño. En este caso, el orden de complejidad del
@@ -55,8 +55,8 @@ public class Ordenamiento {
 	 * ocurre en listas que se encuentran ordenadas, o casi ordenadas. Pero
 	 * principalmente depende del pivote, si por ejemplo el algoritmo implementado
 	 * toma como pivote siempre el primer elemento del array, y el array que le
-	 * pasamos esta ordenado, siempre va a generar a su izquierda un array vacío, lo
-	 * que es ineficiente. En el caso promedio, el orden es O(n�log n).
+	 * pasamos esta ordenado, siempre va a generar a su izquierda un array vacío,
+	 * lo que es ineficiente. En el caso promedio, el orden es O(n�log n).
 	 *
 	 *
 	 * @param a Pre: array de enteros desordenado. Post: array ordenado
@@ -68,7 +68,7 @@ public class Ordenamiento {
 		}
 	}
 
-	private static void quicksort(int[] arreglo, int i, int j) {
+	public static void quicksort(int[] arreglo, int i, int j) {
 		// i posición inicial
 		// j posicion final
 		int indiceP;
@@ -90,7 +90,7 @@ public class Ordenamiento {
 	 * @param max
 	 * @return
 	 */
-	private static int particion(int[] arreglo, int min, int max) {
+	public static int particion(int[] arreglo, int min, int max) {
 		int i, pivote;
 		pivote = arreglo[max];
 		i = (min - 1); // indice del elemento mas chico
@@ -116,7 +116,7 @@ public class Ordenamiento {
 	 * @param i --> elemento 1
 	 * @param j --> elemento 2
 	 */
-	private static void permuta(int[] a, int i, int j) {
+	public static void permuta(int[] a, int i, int j) {
 		int temp;
 		temp = a[i];
 		a[i] = a[j];
@@ -129,15 +129,16 @@ public class Ordenamiento {
 	 * El algoritmo trabaja de la siguiente forma:
 	 * 
 	 * Es un algoritmo de ordenamiento que distribuye todos los elementos a ordenar
-	 * entre un n�mero finito de casilleros. Cada casillero s�lo puede contener los
-	 * elementos que cumplan unas determinadas condiciones. Las condiciones deben
-	 * ser excluyentes entre s�, para evitar que un elemento pueda ser clasificado
-	 * en dos casilleros distintos. Despu�s cada uno de esos casilleros se ordena
-	 * individualmente con otro algoritmo de ordenaci�n (que podr�a ser distinto
-	 * seg�n el casillero), o se aplica recursivamente este algoritmo para obtener
-	 * casilleros con menos elementos. Se trata de una generalizaci�n del algoritmo
-	 * Pigeonhole sort. Cuando los elementos a ordenar est�n uniformemente
-	 * distribuidos la complejidad computacional de este algoritmo es de O(n).
+	 * entre un n�mero finito de casilleros. Cada casillero s�lo puede contener
+	 * los elementos que cumplan unas determinadas condiciones. Las condiciones
+	 * deben ser excluyentes entre s�, para evitar que un elemento pueda ser
+	 * clasificado en dos casilleros distintos. Despu�s cada uno de esos
+	 * casilleros se ordena individualmente con otro algoritmo de ordenaci�n (que
+	 * podr�a ser distinto seg�n el casillero), o se aplica recursivamente este
+	 * algoritmo para obtener casilleros con menos elementos. Se trata de una
+	 * generalizaci�n del algoritmo Pigeonhole sort. Cuando los elementos a
+	 * ordenar est�n uniformemente distribuidos la complejidad computacional de
+	 * este algoritmo es de O(n).
 	 * 
 	 * 
 	 * @param arreglo
@@ -177,7 +178,7 @@ public class Ordenamiento {
 	 * @param bucket:   bucket donde se va a agregar el elemento
 	 * @param elemento: elemento que se va a agregar
 	 */
-	private static void addToBucket(int[] bucket, int elemento) {
+	public static void addToBucket(int[] bucket, int elemento) {
 		int i = 0;
 		while (i < bucket.length && bucket[i] != 0) {
 			i++;
@@ -193,7 +194,7 @@ public class Ordenamiento {
 	 * @param longRango:      rango de los buckets
 	 * @param limitesBuckets: los limites del bucket
 	 */
-	private static void clasificarNumeros(int numero, int[][] bucket, int longRango, int[] limitesBuckets) {
+	public static void clasificarNumeros(int numero, int[][] bucket, int longRango, int[] limitesBuckets) {
 		int sumaCifras, posBucket;
 		sumaCifras = SumaDigitos.sumaCifras(numero);
 		if (sumaCifras % longRango != 0 || sumaCifras == 0) {
