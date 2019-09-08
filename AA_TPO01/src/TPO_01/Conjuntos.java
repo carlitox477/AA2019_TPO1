@@ -32,9 +32,9 @@ public class Conjuntos {
 
 					for (int j = 0; j < arreglo[i].length; j++) {
 						System.out.print(" " + arreglo[i][j]);
-						buff.write(arreglo[i][j] + " ");
+						buff.write(arreglo[i][j] + "\n ");
 					}
-					buff.write("\n");
+					//buff.write("\n");
 				}
 			}
 			buff.close();
@@ -44,6 +44,14 @@ public class Conjuntos {
 			System.err.println("Error leyendo o escribiendo en algun archivo.");
 		}
 	}
+	
+	
+	public static void leerArchivo() {
+		
+	}
+	
+	
+	
 
 	public static ArrayList<int[][]> crearCasosRandomBucketQuickSort(int longTope, int valorLimite, int casosPorLong) {
 		// crea casoPorLong de prueba de longitud 0 a longtope
@@ -66,7 +74,7 @@ public class Conjuntos {
 		return sal;
 	}
 
-	private static int[] crearCasoRandomBucketQuickSort(int cantElementos, int limite) {
+	public static int[] crearCasoRandomBucketQuickSort(int cantElementos, int limite) {
 		// crea casod de prueba de longitud 0 a longtope
 		// Estos casos luego se guardaran en un archivo
 		// y serviran para el calculo empirico de los
